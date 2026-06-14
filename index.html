@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Canvas Web</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MediaPipe Tasks Vision -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Floating UI Panel -->
+        <div class="ui-panel">
+            <h1 class="title">Air Canvas</h1>
+            
+            <div class="status-container">
+                <span class="label">Current Tool:</span>
+                <span id="currentToolDisplay" class="value tool-draw">Draw</span>
+            </div>
+
+            <div class="palette-container">
+                <span class="label">Colors:</span>
+                <div class="colors" id="colorPalette">
+                    <div class="color-box active" style="background-color: rgb(0, 0, 255);" data-index="0"></div>
+                    <div class="color-box" style="background-color: rgb(52, 0, 128);" data-index="1"></div>
+                    <div class="color-box" style="background-color: rgb(255, 0, 255);" data-index="2"></div>
+                    <div class="color-box" style="background-color: rgb(0, 0, 0);" data-index="3"></div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3>Gestures</h3>
+                <ul>
+                    <li><span class="icon">☝️</span> <strong>Draw:</strong> Index finger up</li>
+                    <li><span class="icon">👆</span> <strong>Switch:</strong> Thumb + Index up</li>
+                    <li><span class="icon">🖐️</span> <strong>Change Color:</strong> All fingers up</li>
+                    <li><span class="icon">👍</span> <strong>Erase:</strong> Thumb up only</li>
+                    <li><span class="icon">👌</span> <strong>Clear:</strong> Index, Middle, Ring up</li>
+                </ul>
+            </div>
+            
+            <button id="enableWebcamButton" class="btn-primary">Enable Webcam</button>
+        </div>
+
+        <!-- Video and Canvas Layers -->
+        <div class="canvas-container">
+            <video id="webcam" autoplay playsinline></video>
+            <!-- Displays the camera feed and landmarks -->
+            <canvas id="output_canvas"></canvas>
+            <!-- Used for drawing the actual lines -->
+            <canvas id="drawing_canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
